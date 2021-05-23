@@ -87,19 +87,4 @@ public class BoardServiceImpl implements BoardService {
         }
         return boardList;
     }
-
-    // @Override
-    // public boolean updateBoard(BoardDTO params) {
-    //     // TODO: isViewed가 0일때만 수정 가능
-    //     int queryResult = 0;
-
-    //     if (params.getIsViewed() == 0){
-    //         queryResult = boardMapper.updateBoard(params);
-    //     }
-    //     return (queryResult == 1) ? true: false;
-    // }
-
-    
-
-
 }

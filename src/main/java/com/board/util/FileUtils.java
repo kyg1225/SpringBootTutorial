@@ -13,11 +13,10 @@ import java.util.UUID;
 import com.board.domain.AttachDTO;
 import com.board.exception.AttachFileException;
 
-import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import net.bytebuddy.asm.Advice.Return;
 
 @Component
 public class FileUtils {
@@ -58,7 +57,7 @@ public class FileUtils {
         for (MultipartFile file: files){
             try {
                 //파일 확장자
-                final String extension = FileUtils.getExtension(file.getOriginalFilename());
+                final String extension = FilenameUtils.getExtension(file.getOriginalFilename());
                 
                 //서버에 저장할 파일명(랜덤문자열+확장자)
                 final String saveName = getRandomString() + "." + extension;

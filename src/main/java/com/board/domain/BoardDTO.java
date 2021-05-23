@@ -14,8 +14,8 @@ public class BoardDTO {
 	private String content;
 	//작성자
 	private String writer;
-	// //조회 수
-	// private int isViewed;
+	//조회 수
+	private int viewCnt;
 	//삭제 여부
 	private String deleteYn;
 	// 등록일
