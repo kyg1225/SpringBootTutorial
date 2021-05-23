@@ -53,18 +53,28 @@
         where idx = #{idx}
     </update>
 
-    <select id="selectBoardList" parameterType="BoardDTO" resultType="BoardDTO">
-        select <include refid="boardColumns"/>
-        from tb_board
-        where delete_yn = 'N'
-        order by
-                idx DESC,
-                insert_time DESC
-    </select>
+    <select id="selectBoardList" parameterType="Criteria" resultType="BoardDTO">
+		SELECT
+			<include refid="boardColumns" />
+		FROM
+			tb_board
+		WHERE
+			delete_yn = 'N'
+		ORDER BY
+			notice_yn ASC,
+			idx DESC,
+			insert_time DESC
+		LIMIT
+			#{startPage}, #{recordsPerPage}
+	</select>
 
-    <select id="selectBoardTotalCount" parameterType="BoardDTO" resultType="int">
-        select COUNT(*)
-        from tb_board
-        where delete_yn = 'N'
-    </select>
+	<select id="selectBoardTotalCount" parameterType="Criteria" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			tb_board
+		WHERE
+			delete_yn = 'N'
+	</select>
+
 </mapper>

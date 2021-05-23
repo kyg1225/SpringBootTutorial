@@ -2,6 +2,7 @@ package com.board.controller;
 
 import com.board.constant.Method;
 import com.board.domain.BoardDTO;
+import com.board.paging.Criteria;
 import com.board.service.BoardService;
 import com.board.util.UiUtils;
 
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -64,8 +66,8 @@ public class BoardController extends UiUtils {
 
     //게시글 목록 구현
     @GetMapping(value = "/board/list.do")
-	public String openBoardList(Model model) {
-		List<BoardDTO> boardList = boardService.getBoardList();
+	public String openBoardList(@ModelAttribute("criteria") Criteria criteria, Model model) {
+		List<BoardDTO> boardList = boardService.getBoardList(criteria);
 		model.addAttribute("boardList", boardList);
 
 		return "board/list";
